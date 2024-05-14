@@ -1,0 +1,49 @@
+<!-- templates/exercises/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>MyFitness</title>
+</head>
+<body>
+    <div class="container">
+        <h1>MyFitness</h1>
+        
+        <!-- Form to add muscle -->
+        <h2>Add Muscle</h2>
+        <form method="post" action="{% url 'add_muscle' %}">
+            {% csrf_token %}
+            {{ muscle_form.as_p }}
+            <button type="submit">Save</button>
+        </form>
+
+        <!-- Form to add exercise -->
+        <h2>Add Exercise</h2>
+        <form method="post" action="{% url 'add_exercise' %}">
+            {% csrf_token %}
+            {{ exercise_form.as_p }}
+            <button type="submit">Save</button>
+        </form>
+
+        <!-- List of muscles -->
+        <h2>Muscle List</h2>
+        <ul>
+            {% for muscle in muscles %}
+                <li>{{ muscle.name }}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- List of exercises -->
+        <h2>Exercise List</h2>
+        <ul>
+            {% for exercise in exercises %}
+                <li>{{ exercise.name }} - {{ exercise.description }} - Muscles: {{ exercise.muscles_worked.all|join:", " }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

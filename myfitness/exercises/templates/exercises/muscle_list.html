@@ -1,0 +1,17 @@
+<!-- templates/exercises/muscle_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Muscle List</title>
+</head>
+<body>
+    <h1>Muscle List</h1>
+    <ul>
+        {% for muscle in muscles %}
+            <li>{{ muscle.name }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_muscle' %}">Add a new muscle</a>
+</body>
+</html>

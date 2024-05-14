@@ -1,0 +1,17 @@
+<!-- templates/exercises/add_muscle.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Muscle</title>
+</head>
+<body>
+    <h1>Add Muscle</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'muscle_list' %}">Back to muscle list</a>
+</body>
+</html>
